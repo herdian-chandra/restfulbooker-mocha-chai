@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test-create-token": "npx mocha tests/integtration-test/create-token.js",
-    "test-create-booking": "npx mocha tests/integtration-test/create-booking.js"
+    "test-create-booking": "npx mocha tests/integtration-test/create-booking.js",
+    "test-e2e": "npx mocha tests/scenarios/e2e-restful-booker.js"
   },
   "keywords": [],
   "author": "Herdian Chandra",
