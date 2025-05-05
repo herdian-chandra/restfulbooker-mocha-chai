@@ -1,18 +1,9 @@
-const request = require("supertest");
 const expect = require("chai").expect;
 const restfulBooker = require("../pages/restful-booker");
 
 const dataToken = require("../data/e2e/create-token.json");
 const dataBooking = require("../data/e2e/create-booking.json");
 const updateBooking = require("../data/e2e/update-booking.json");
-
-const URL = "https://restful-booker.herokuapp.com";
-const deleteBookingEndpoint = "/booking";
-
-let header = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-};
 
 let token = "";
 let bookingId = "";
@@ -69,7 +60,7 @@ describe("E2E Test Restful Booker", async function () {
   it("Ensure api Update Booking successfully send the request", async function () {
     //send the request
     this.timeout(60000);
-    const response = await restfulBooker.updateBooking(
+    const response = await restfulBooker.udpateBookoing(
       bookingId,
       token,
       updateBooking
