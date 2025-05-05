@@ -1,6 +1,6 @@
 require("dotenv").config({ path: ".env.production" });
 const request = require("supertest");
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.BASE_URL_RESTFULBOOKER;
 
 // Wrapper to include default headers and base URL
 const baseRequest = (method, path) => {
