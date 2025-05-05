@@ -1,14 +1,12 @@
 const request = require("supertest");
 const expect = require("chai").expect;
+const restfulBooker = require("../pages/restful-booker");
+
 const dataToken = require("../data/e2e/create-token.json");
 const dataBooking = require("../data/e2e/create-booking.json");
 const updateBooking = require("../data/e2e/update-booking.json");
 
 const URL = "https://restful-booker.herokuapp.com";
-const createTokenEndpoint = "/auth";
-const createBookingEndpoint = "/booking";
-const getBookingEndpoint = "/booking";
-const updateBookingEndpoint = "/booking";
 const deleteBookingEndpoint = "/booking";
 
 let header = {
@@ -26,14 +24,10 @@ describe("E2E Test Restful Booker", async function () {
   it("Ensure api Create Token successfully send the request", async function () {
     //send the request
     this.timeout(60000);
-    const response = await request(URL)
-      .post(createTokenEndpoint)
-      .send(dataToken);
-
+    const response = await restfulBooker.createToken(dataToken);
     //assertion
     expect(response.statusCode).to.eql(200);
     expect(response.body).to.have.property("token");
-
     //store the token into variable
     token = response.body.token;
   });
@@ -44,11 +38,7 @@ describe("E2E Test Restful Booker", async function () {
   it("Ensure api Create Booking successfully send the request", async function () {
     //send the request
     this.timeout(60000);
-    const response = await request(URL)
-      .post(createBookingEndpoint)
-      .set(header)
-      .send(dataBooking);
-
+    const response = await restfulBooker.createBooking(dataBooking);
     //assertion
     expect(response.statusCode).to.eql(200);
     expect(response.body).to.have.property("bookingid");
@@ -58,7 +48,6 @@ describe("E2E Test Restful Booker", async function () {
     expect(response.body.booking.additionalneeds).to.eql(
       dataBooking.additionalneeds
     );
-
     //store the bookingId into variable
     bookingId = response.body.bookingid;
   });
@@ -69,9 +58,7 @@ describe("E2E Test Restful Booker", async function () {
   it("Ensure api Get Booking By Id sucessfully send the request with Id", async function () {
     //send the request
     this.timeout(60000);
-    let newEndpoint = `${getBookingEndpoint}/${bookingId}`;
-    const response = await request(URL).get(newEndpoint).set(header);
-
+    const response = await restfulBooker.getBookingById(bookingId);
     //assertion
     expect(response.statusCode).to.eql(200);
   });
@@ -82,13 +69,11 @@ describe("E2E Test Restful Booker", async function () {
   it("Ensure api Update Booking successfully send the request", async function () {
     //send the request
     this.timeout(60000);
-    let newEndpoint = `${updateBookingEndpoint}/${bookingId}`;
-    const response = await request(URL)
-      .put(newEndpoint)
-      .set(header)
-      .set("Cookie", "token=" + token)
-      .send(updateBooking);
-
+    const response = await restfulBooker.updateBooking(
+      bookingId,
+      token,
+      updateBooking
+    );
     //assertion
     expect(response.statusCode).to.eql(200);
     expect(response.body.firstname).to.eql(updateBooking.firstname);
@@ -102,10 +87,7 @@ describe("E2E Test Restful Booker", async function () {
   it("Ensure api Delete Booking successfully send the request", async function () {
     //send the request
     this.timeout(60000);
-    let newEndpoint = `${deleteBookingEndpoint}/${bookingId}`;
-    const response = await request(URL)
-      .delete(newEndpoint)
-      .set("Cookie", "token=" + token);
+    const response = await restfulBooker.deleteBooking(token, bookingId);
 
     //assertion
     expect(response.statusCode).to.eql(201);
