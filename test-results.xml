@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="5.161" tests="5" failures="0">
+  <testsuite name="Root Suite" timestamp="2025-05-05T17:13:58" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="E2E Test Restful Booker" timestamp="2025-05-05T17:13:58" tests="5" file="/Users/macbookpro/Documents/Project/restfulbooker-mocha-chai/tests/scenarios/e2e-restful-booker.js" time="5.160" failures="0">
+    <testcase name="E2E Test Restful Booker Ensure api Create Token successfully send the request" time="1.127" classname="Ensure api Create Token successfully send the request">
+    </testcase>
+    <testcase name="E2E Test Restful Booker Ensure api Create Booking successfully send the request" time="0.976" classname="Ensure api Create Booking successfully send the request">
+    </testcase>
+    <testcase name="E2E Test Restful Booker Ensure api Get Booking By Id sucessfully send the request with Id" time="0.967" classname="Ensure api Get Booking By Id sucessfully send the request with Id">
+    </testcase>
+    <testcase name="E2E Test Restful Booker Ensure api Update Booking successfully send the request" time="1.012" classname="Ensure api Update Booking successfully send the request">
+    </testcase>
+    <testcase name="E2E Test Restful Booker Ensure api Delete Booking successfully send the request" time="1.071" classname="Ensure api Delete Booking successfully send the request">
+    </testcase>
+  </testsuite>
+</testsuites>
