@@ -38,4 +38,5 @@ npx cypress open
 
 - Result
 
-  ![alt text](img/)
+  ![alt text](img/result-1.png)
+  ![alt text](img/result-2.png)
