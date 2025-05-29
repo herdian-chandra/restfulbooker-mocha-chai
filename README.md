@@ -16,6 +16,12 @@ Install project dependencies by running the following command in your terminal:
 npm install
 ```
 
+Check in **`package.json`** file for test scripts that you can run locally.
+
+```sh
+npm run test-e2e-html
+```
+
 ## Sample Reports using Mochawesome
 
 ![alt text](img/report-mochawesome.png)
