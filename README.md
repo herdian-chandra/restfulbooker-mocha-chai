@@ -16,12 +16,6 @@ Install project dependencies by running the following command in your terminal:
 npm install
 ```
 
-To open the Cypress Test Runner and view all test cases, execute:
-
-```sh
-npx cypress open
-```
-
 ## Sample Reports using Mochawesome
 
 ![alt text](img/report-mochawesome.png)
